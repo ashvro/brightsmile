@@ -1,4 +1,4 @@
-import Reveal from './Reveal';
+import Reveal from '../layout/Reveal';
 import './ServiceVideos.css';
 
 const videos = [

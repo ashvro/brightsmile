@@ -1,5 +1,5 @@
 import { MdOutlineChat, MdEmail, MdLocationOn } from 'react-icons/md';
-import Reveal from './Reveal';
+import Reveal from '../layout/Reveal';
 import './PageExtras.css';
 
 const hours = [

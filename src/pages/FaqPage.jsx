@@ -1,7 +1,7 @@
-import PageHero from '../components/PageHero';
-import Faq from '../components/Faq';
-import FaqExtras from '../components/FaqExtras';
-import Appointment from '../components/Appointment';
+import PageHero from '../components/layout/PageHero';
+import Faq from '../components/sections/Faq';
+import FaqExtras from '../components/sections/FaqExtras';
+import Appointment from '../components/sections/Appointment';
 
 export default function FaqPage() {
   return (

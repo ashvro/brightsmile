@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MdOutlinePhone, MdOutlineChat, MdEmail, MdLocationOn, MdOutlineWatchLater, MdCheckCircle, MdErrorOutline } from 'react-icons/md';
-import Reveal from '../components/Reveal';
+import Reveal from '../components/layout/Reveal';
 import './ContactPage.css';
 
 const subjects = ['General Inquiry', 'Book an Appointment', 'Insurance & Billing', 'Feedback'];

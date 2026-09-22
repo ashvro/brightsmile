@@ -1,5 +1,5 @@
-import Reveal from './Reveal';
-import doctor1 from '../assets/doctor1.png';
+import Reveal from '../layout/Reveal';
+import doctor1 from '../../assets/doctor1.png';
 import './About.css';
 
 export default function About({ naked = false }) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FiCalendar, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
-import Reveal from './Reveal';
+import Reveal from '../layout/Reveal';
 import './Appointment.css';
 
 const services = ['General Checkup', 'Cosmetic Dentistry', 'Orthodontics / Aligners', 'Dental Implants', 'Teeth Whitening', 'Emergency Care'];

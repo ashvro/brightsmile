@@ -1,16 +1,47 @@
-# React + Vite
+# BrightSmile Dental
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Marketing site for BrightSmile Dental — React 19 + Vite, client-side routing, scroll animations, and a responsive mobile navbar.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19, Vite 8
+- React Router 7
+- Framer Motion, react-icons, react-scroll
+- oxlint
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev        # local dev server
+npm run lint       # oxlint
+npm run build      # production build to dist/
+npm run preview    # preview the production build
+```
 
-## Expanding the Oxlint configuration
+## Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```
+src/
+  main.jsx            entry
+  App.jsx             routes + layout shell
+  styles/index.css    global styles & design tokens
+  assets/             images
+  components/
+    layout/           Navbar, Footer, FloatingContact, PageHero, Reveal
+    sections/         page sections (Hero, Services, About, FAQ, …)
+  pages/              route components composing sections
+```
+
+## Routes
+
+| Path | Page |
+| --- | --- |
+| `/` | Home |
+| `/services` | Services |
+| `/about-us` | About |
+| `/testimonials` | Testimonials |
+| `/faq` | FAQ |
+| `/contact` | Contact |
+
+SPA fallback for client-side routes is configured in `vercel.json`.

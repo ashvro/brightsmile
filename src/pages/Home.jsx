@@ -1,11 +1,11 @@
-import Hero from '../components/Hero';
-import Stats from '../components/Stats';
-import Marquee from '../components/Marquee';
-import Services from '../components/Services';
-import About from '../components/About';
-import Testimonials from '../components/Testimonials';
-import Faq from '../components/Faq';
-import Appointment from '../components/Appointment';
+import Hero from '../components/sections/Hero';
+import Stats from '../components/sections/Stats';
+import Marquee from '../components/sections/Marquee';
+import Services from '../components/sections/Services';
+import About from '../components/sections/About';
+import Testimonials from '../components/sections/Testimonials';
+import Faq from '../components/sections/Faq';
+import Appointment from '../components/sections/Appointment';
 
 export default function Home() {
   return (

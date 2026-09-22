@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { MdArrowForward, MdCheck, MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
-import Reveal from './Reveal';
-import slide1 from '../assets/slide1.jpg';
-import slide2 from '../assets/slide2.jpg';
-import slide3 from '../assets/slide3.jpg';
-import slide4 from '../assets/slide4.jpg';
-import slide5 from '../assets/slide5.jpg';
-import doctor2 from '../assets/doctor2.png';
+import Reveal from '../layout/Reveal';
+import slide1 from '../../assets/slide1.jpg';
+import slide2 from '../../assets/slide2.jpg';
+import slide3 from '../../assets/slide3.jpg';
+import slide4 from '../../assets/slide4.jpg';
+import slide5 from '../../assets/slide5.jpg';
+import doctor2 from '../../assets/doctor2.png';
 import './Services.css';
 
 const filters = [

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiPlus } from 'react-icons/fi';
-import Reveal from './Reveal';
+import Reveal from '../layout/Reveal';
 import './Faq.css';
 
 const faqs = [

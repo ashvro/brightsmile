@@ -1,7 +1,7 @@
-import Reveal from './Reveal';
-import doctor1 from '../assets/doctor1.png';
-import doctor2 from '../assets/doctor2.png';
-import doctor3 from '../assets/doctor3.png';
+import Reveal from '../layout/Reveal';
+import doctor1 from '../../assets/doctor1.png';
+import doctor2 from '../../assets/doctor2.png';
+import doctor3 from '../../assets/doctor3.png';
 import './AboutTeam.css';
 
 const team = [

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { MdStar, MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { motion } from 'framer-motion';
-import Reveal from './Reveal';
+import Reveal from '../layout/Reveal';
 import './Testimonials.css';
 
 const reviews = [

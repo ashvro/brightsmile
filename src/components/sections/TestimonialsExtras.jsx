@@ -1,7 +1,7 @@
 import { MdStar } from 'react-icons/md';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import Reveal from './Reveal';
+import Reveal from '../layout/Reveal';
 import './PageExtras.css';
 
 const breakdown = [

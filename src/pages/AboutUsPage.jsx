@@ -1,8 +1,8 @@
-import PageHero from '../components/PageHero';
-import About from '../components/About';
-import AboutExtras from '../components/AboutExtras';
-import AboutTeam from '../components/AboutTeam';
-import Appointment from '../components/Appointment';
+import PageHero from '../components/layout/PageHero';
+import About from '../components/sections/About';
+import AboutExtras from '../components/sections/AboutExtras';
+import AboutTeam from '../components/sections/AboutTeam';
+import Appointment from '../components/sections/Appointment';
 
 export default function AboutUsPage() {
   return (

@@ -1,7 +1,7 @@
-import PageHero from '../components/PageHero';
-import Testimonials from '../components/Testimonials';
-import TestimonialsExtras from '../components/TestimonialsExtras';
-import Appointment from '../components/Appointment';
+import PageHero from '../components/layout/PageHero';
+import Testimonials from '../components/sections/Testimonials';
+import TestimonialsExtras from '../components/sections/TestimonialsExtras';
+import Appointment from '../components/sections/Appointment';
 
 export default function TestimonialsPage() {
   return (
