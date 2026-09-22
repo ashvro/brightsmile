@@ -1,0 +1,147 @@
+/* ─── Design Tokens ──────────────────────────────────────── */
+:root {
+  --primary: #0f7d6d;
+  --primary-dark: #0a5f53;
+  --primary-light: #dff3ec;
+  --accent: #3fb5a0;
+  --accent-gold: #c9a84c;
+  --navy: #123f38;
+  --navy-mid: #1c5850;
+  --mint: #d6f5ec;
+  --white: #ffffff;
+  --off-white: #f7f5ef;
+  --cream: #fbfaf6;
+  --text-dark: #123f38;
+  --text-mid: #52706a;
+  --text-light: #8aa39b;
+  --border: #e2ebe5;
+  --shadow-sm: 0 2px 12px rgba(15,125,109,0.08);
+  --shadow-md: 0 8px 32px rgba(15,125,109,0.14);
+  --shadow-lg: 0 24px 64px rgba(15,125,109,0.18);
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ─── Reset & Base ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: clip; }
+body {
+  font-family: var(--font);
+  background: var(--off-white);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: clip;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { font-family: var(--font); cursor: pointer; }
+input, select, textarea { font-family: var(--font); }
+
+/* ─── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--off-white); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; }
+
+/* ─── Utilities ─────────────────────────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-tag::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.section-title span { color: var(--primary); }
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  max-width: 560px;
+  margin-top: 12px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 4px 20px rgba(15,125,109,0.35);
+  transition: var(--transition);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(15,125,109,0.45);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--primary);
+  padding: 13px 30px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 2px solid var(--primary);
+  transition: var(--transition);
+}
+.btn-outline:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ─── Ambient backgrounds ──────────────────────────────── */
+.ambient-blobs { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+}
+.ambient-blob-1 {
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, #dff3ec, transparent 70%);
+  top: -160px; right: -140px;
+  animation: blobFloat 14s ease-in-out infinite;
+}
+.ambient-blob-2 {
+  width: 460px; height: 460px;
+  background: radial-gradient(circle, #d6f5ec, transparent 70%);
+  bottom: -140px; left: -120px;
+  animation: blobFloat 18s ease-in-out infinite reverse;
+}
+@keyframes blobFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(30px); }
+}

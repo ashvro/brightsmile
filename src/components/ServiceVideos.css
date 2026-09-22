@@ -1,0 +1,206 @@
+.videos {
+  background: var(--off-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.videos::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(63, 181, 160, 0.14) 0%, rgba(63, 181, 160, 0) 70%);
+  pointer-events: none;
+}
+
+.videos .section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-dark);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(15, 125, 109, 0.35);
+}
+
+.video-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.video-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.video-card:hover .video-thumb img {
+  transform: scale(1.05);
+}
+
+.video-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 63, 56, 0) 55%, rgba(18, 63, 56, 0.55) 100%);
+  pointer-events: none;
+}
+
+.video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(15, 125, 109, 0.92);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  z-index: 2;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px rgba(15, 125, 109, 0.45);
+}
+
+.video-play::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 9px 0 9px 15px;
+  border-color: transparent transparent transparent var(--white);
+}
+
+.video-card:hover .video-play {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: var(--primary);
+}
+
+.video-duration {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  background: rgba(18, 63, 56, 0.85);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+.video-body {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.video-service {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+}
+
+.video-body h3 {
+  margin: 0;
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--text-dark);
+}
+
+.video-watch {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.video-watch-arrow {
+  transition: transform 0.3s ease;
+}
+
+.video-card:hover .video-watch {
+  color: var(--primary-dark);
+}
+
+.video-card:hover .video-watch-arrow {
+  transform: translateX(4px);
+}
+
+.videos-note {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.videos-note p {
+  display: inline-block;
+  font-size: 12.5px;
+  color: var(--text-mid);
+  background: rgba(15, 125, 109, 0.06);
+  border: 1px dashed rgba(15, 125, 109, 0.3);
+  border-radius: 999px;
+  padding: 8px 18px;
+}
+
+@media (max-width: 900px) {
+  .videos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .videos .section-header {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .videos-grid {
+    grid-template-columns: 1fr;
+  }
+}

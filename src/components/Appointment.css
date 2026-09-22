@@ -1,0 +1,100 @@
+.appointment-section {
+  background: linear-gradient(135deg, var(--navy) 0%, #0f3d38 60%, var(--primary) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.appointment-section::before {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(63,181,160,0.12), transparent 65%);
+  top: -200px; right: -200px;
+  border-radius: 50%;
+}
+.appointment-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.appt-text { display: flex; flex-direction: column; gap: 20px; }
+.section-tag-light { color: rgba(255,255,255,0.85); }
+.section-tag-light::before { background: linear-gradient(90deg, #8fd6c8, #3fb5a0); }
+.appt-sub { font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.75; }
+.appt-perks { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.appt-perks li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+}
+.appt-perks li svg { color: #4ade80; font-size: 1.1rem; flex-shrink: 0; }
+
+.appt-form-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-lg);
+}
+.appt-form { display: flex; flex-direction: column; gap: 20px; }
+.appt-form h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 0.82rem; font-weight: 600; color: var(--text-mid); }
+.form-group input,
+.form-group select {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  background: #f4faf7;
+  outline: none;
+  transition: var(--transition);
+}
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(15,125,109,0.12);
+}
+.form-group.has-error input,
+.form-group.has-error select {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+.form-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #dc2626;
+}
+.form-error svg { flex-shrink: 0; }
+.appt-submit { width: 100%; justify-content: center; padding: 15px; font-size: 1rem; margin-top: 4px; }
+
+.appt-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  padding: 20px 0;
+}
+.success-icon { font-size: 3.5rem; color: #22c55e; }
+.appt-success h3 { font-size: 1.4rem; color: var(--navy); font-weight: 800; }
+.appt-success p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; }
+
+@media (max-width: 860px) {
+  .appointment-inner { grid-template-columns: 1fr; gap: 40px; }
+}
