@@ -1,6 +1,8 @@
 .stats-section {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-  padding: 70px 0;
+  padding: 36px 0 56px;
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--primary), var(--accent), var(--accent-gold)) 1;
 }
 .stats-grid {
   display: grid;

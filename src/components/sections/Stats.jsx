@@ -33,7 +33,7 @@ function CountUp({ target, suffix, inView }) {
 
 export default function Stats() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const inView = useInView(ref, { once: true, amount: 0.15, margin: '0px' });
 
   return (
     <section className="stats-section" ref={ref}>
@@ -43,7 +43,7 @@ export default function Stats() {
             key={s.label}
             className="stat-card"
             initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ delay: i * 0.12, duration: 0.55 }}
           >
             <div className="stat-value">

@@ -1,6 +1,6 @@
 .hero {
-  height: 100vh;
-  min-height: 560px;
+  height: 78vh;
+  min-height: 480px;
   position: relative;
   overflow: hidden;
   background: var(--navy);
@@ -111,7 +111,7 @@
 }
 
 @media (max-width: 640px) {
-  .hero { height: 82vh; }
+  .hero { height: 70vh; min-height: 420px; }
   .hero-arrow { width: 42px; height: 42px; font-size: 1.2rem; }
   .hero-arrow-left { left: 12px; }
   .hero-arrow-right { right: 12px; }
