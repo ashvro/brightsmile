@@ -29,15 +29,6 @@ export default function PageHero({ tag, title, accent, subtitle, display }) {
     <section className={`page-hero${isDisplay ? ' page-hero-display-mode' : ''}`}>
       <div className="page-hero-blob page-hero-blob-1" aria-hidden="true" />
       <div className="page-hero-blob page-hero-blob-2" aria-hidden="true" />
-      {isDisplay && (
-        <>
-          <div className="page-hero-ring page-hero-ring-1" aria-hidden="true" />
-          <div className="page-hero-ring page-hero-ring-2" aria-hidden="true" />
-          <div className="page-hero-orb page-hero-orb-1" aria-hidden="true" />
-          <div className="page-hero-orb page-hero-orb-2" aria-hidden="true" />
-          <div className="page-hero-grid" aria-hidden="true" />
-        </>
-      )}
       <div className="container page-hero-display-wrap">
         {isDisplay ? (
           <DisplayTitle text={display} />
