@@ -12,7 +12,7 @@ const reviews = [
   { name: 'Olivia Chen', init: 'OC', role: 'Patient since 2018', text: 'I\'ve been coming here for 6 years and the quality has never wavered. Dr. Johnson\'s cosmetic work gave me the smile I\'ve always wanted.' },
 ];
 
-const STEP = 460;
+const STEP = 500;
 const N = reviews.length;
 const HALF = Math.floor(N / 2);
 const MOVE = { duration: 0.5, ease: [0.35, 0.8, 0.2, 1] };
@@ -69,14 +69,22 @@ export default function Testimonials({ naked = false }) {
 
   return (
     <section className="testimonials section-pad" id="testimonials">
+      <div className="ambient-blobs" aria-hidden="true">
+        <div className="ambient-blob ambient-blob-1" />
+        <div className="ambient-blob ambient-blob-2" />
+      </div>
+      <div className="edge-rails" aria-hidden="true">
+        <span className="edge-rail edge-rail-l" />
+        <span className="edge-rail edge-rail-r" />
+        <span className="edge-arc edge-arc-l" />
+        <span className="edge-arc edge-arc-r" />
+        <span className="edge-dots edge-dots-tl" />
+        <span className="edge-dots edge-dots-br" />
+      </div>
       <div className="container">
         {!naked && (
           <Reveal className="section-header">
-            <div className="section-tag">Patient Stories</div>
             <h2 className="section-title">Kind Words From <span>Our Patients</span></h2>
-            <p className="section-subtitle">
-              We take time to get to know every patient — here's what that care has meant to others.
-            </p>
           </Reveal>
         )}
 
@@ -86,6 +94,8 @@ export default function Testimonials({ naked = false }) {
         </Reveal>
 
         <div className="testimonials-carousel">
+          <span className="edge-fade edge-fade-l" aria-hidden="true" />
+          <span className="edge-fade edge-fade-r" aria-hidden="true" />
           <button className="carousel-arrow carousel-arrow-left" onClick={() => setCs(c => c - 1)} aria-label="Previous reviews">
             <MdChevronLeft />
           </button>

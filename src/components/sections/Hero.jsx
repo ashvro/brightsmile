@@ -41,7 +41,7 @@ const slides = [
   },
 ];
 
-const SLIDE_MS = 2000;
+const SLIDE_MS = 2500;
 
 export default function Hero() {
   const [index, setIndex] = useState(0);

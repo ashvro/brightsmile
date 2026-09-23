@@ -1,7 +1,6 @@
 import PageHero from '../components/layout/PageHero';
 import Faq from '../components/sections/Faq';
 import FaqExtras from '../components/sections/FaqExtras';
-import Appointment from '../components/sections/Appointment';
 
 export default function FaqPage() {
   return (
@@ -14,7 +13,6 @@ export default function FaqPage() {
       />
       <Faq naked />
       <FaqExtras />
-      <Appointment />
     </>
   );
 }

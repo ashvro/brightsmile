@@ -3,49 +3,29 @@
 .section-header .section-subtitle { margin: 12px auto 0; }
 
 /* Ambient blobs — hero vibe */
-.services { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--off-white) 0%, #eef7f1 100%); }
+.services {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--off-white) 0%, #eef7f1 100%);
+}
 .services .container { position: relative; z-index: 1; }
 
-/* Filter pills */
-.filter-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: -20px 0 40px; }
-.filter-pill {
-  padding: 10px 22px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--white);
-  color: var(--text-mid);
-  font-weight: 700;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: var(--transition);
-  font-family: inherit;
-}
-.filter-pill:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
-.filter-pill.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(15,125,109,0.28);
-}
-
-/* Carousel */
+/* Bleed carousels past container toward screen edges */
 .services-carousel {
   position: relative;
   overflow: hidden;
-  margin: 0 -40px;
-  padding: 30px 40px 24px;
+  margin: 0 min(-6vw, -40px);
+  padding: 30px 48px 24px;
   touch-action: pan-y;
 }
-.services-track {
-  position: relative;
-  height: 520px;
-}
+.services .edge-fade { --edge-from: #eef7f1; }
+.services .services-track { height: 520px; }
 .ring-track .glide-card {
   position: absolute;
   top: 0;
   left: 50%;
-  margin-left: -150px;
-  width: 300px;
+  margin-left: -165px;
+  width: 330px;
   will-change: transform;
 }
 .glide-card .service-card {
@@ -251,4 +231,5 @@
 @media (max-width: 580px) {
   .services-carousel { margin: 0 -20px; padding: 20px 20px 16px; }
   .ring-track .glide-card { width: 260px; margin-left: -130px; }
+  .edge-fade { width: 40px; }
 }

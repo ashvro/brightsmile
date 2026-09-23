@@ -1,7 +1,6 @@
 import PageHero from '../components/layout/PageHero';
 import Testimonials from '../components/sections/Testimonials';
 import TestimonialsExtras from '../components/sections/TestimonialsExtras';
-import Appointment from '../components/sections/Appointment';
 
 export default function TestimonialsPage() {
   return (
@@ -14,7 +13,6 @@ export default function TestimonialsPage() {
       />
       <Testimonials naked />
       <TestimonialsExtras />
-      <Appointment />
     </>
   );
 }

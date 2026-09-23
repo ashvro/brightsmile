@@ -11,15 +11,6 @@ import slide5 from '../../assets/slide5.jpg';
 import doctor2 from '../../assets/doctor2.png';
 import './Services.css';
 
-const filters = [
-  { id: 'all', label: 'All Services' },
-  { id: 'preventive', label: 'Preventive' },
-  { id: 'cosmetic', label: 'Cosmetic' },
-  { id: 'ortho', label: 'Orthodontics' },
-  { id: 'restorative', label: 'Restorative' },
-  { id: 'emergency', label: 'Emergency' },
-];
-
 const services = [
   {
     title: 'General Dentistry', color: '#0f7d6d', img: slide1, cat: 'preventive', price: 'From $99',
@@ -59,7 +50,7 @@ const services = [
   },
 ];
 
-const STEP = 390;
+const STEP = 360;
 const N = services.length;
 const HALF = Math.floor(N / 2);
 const MOVE = { duration: 0.5, ease: [0.35, 0.8, 0.2, 1] };
@@ -120,20 +111,12 @@ function Card({ data, off, dist }) {
 }
 
 export default function Services({ naked = false }) {
-  const [active, setActive] = useState('all');
   const [cs, setCs] = useState(0);
-
-  const visible = active === 'all' ? services : services.filter(s => s.cat === active);
 
   useEffect(() => {
     const id = setInterval(() => setCs(c => c + 1), 2000);
     return () => clearInterval(id);
   }, []);
-
-  const changeFilter = id => {
-    setActive(id);
-    setCs(0);
-  };
 
   return (
     <section className="services section-pad" id="services">
@@ -141,38 +124,34 @@ export default function Services({ naked = false }) {
         <div className="ambient-blob ambient-blob-1" />
         <div className="ambient-blob ambient-blob-2" />
       </div>
+      <div className="edge-rails" aria-hidden="true">
+        <span className="edge-rail edge-rail-l" />
+        <span className="edge-rail edge-rail-r" />
+        <span className="edge-arc edge-arc-l" />
+        <span className="edge-arc edge-arc-r" />
+        <span className="edge-dots edge-dots-tl" />
+        <span className="edge-dots edge-dots-br" />
+      </div>
       <div className="container">
         {!naked && (
           <Reveal className="section-header">
-            <div className="section-tag">What We Offer</div>
             <h2 className="section-title">Comprehensive Dental <span>Services</span></h2>
             <p className="section-subtitle">From routine checkups to complete smile transformations, we provide every service you need under one roof.</p>
           </Reveal>
         )}
 
-        <Reveal delay={0.05} className="filter-row">
-          {filters.map(f => (
-            <button
-              key={f.id}
-              className={`filter-pill${active === f.id ? ' active' : ''}`}
-              onClick={() => changeFilter(f.id)}
-              aria-pressed={active === f.id}
-            >
-              {f.label}
-            </button>
-          ))}
-        </Reveal>
-
         <div className="services-carousel">
+          <span className="edge-fade edge-fade-l" aria-hidden="true" />
+          <span className="edge-fade edge-fade-r" aria-hidden="true" />
           <button className="carousel-arrow carousel-arrow-left" onClick={() => setCs(c => c - 1)} aria-label="Previous services">
             <MdChevronLeft />
           </button>
           <div className="services-track ring-track">
-            {visible.map((s, j) => {
+            {services.map((s, j) => {
               const { dist, x } = slot(j, cs);
               return (
                 <Card
-                  key={active + '-' + j}
+                  key={j}
                   data={s}
                   off={x}
                   dist={dist}
