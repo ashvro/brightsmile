@@ -5,7 +5,7 @@ import FaqExtras from '../components/sections/FaqExtras';
 export default function FaqPage() {
   return (
     <>
-      <PageHero display="Frequently Asked Questions" />
+      <PageHero display="FAQ" />
       <Faq naked />
       <FaqExtras />
     </>

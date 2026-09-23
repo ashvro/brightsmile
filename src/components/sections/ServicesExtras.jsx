@@ -25,9 +25,7 @@ export default function ServicesExtras() {
     <section className="fx-band">
       <div className="container">
         <Reveal className="fx-head">
-          <div className="section-tag">Your Visit</div>
           <h2>A Simple Path to Great <span>Dental Care</span></h2>
-          <p>Four easy steps from first click to a healthier, more confident smile.</p>
         </Reveal>
 
         <div className="fx-steps">

@@ -13,7 +13,6 @@ export default function AboutExtras() {
     <section className="fx-band">
       <div className="container">
         <Reveal className="fx-head">
-          <div className="section-tag">Our Journey</div>
           <h2>Sixteen Years of Trust, <span>Milestone by Milestone</span></h2>
         </Reveal>
 

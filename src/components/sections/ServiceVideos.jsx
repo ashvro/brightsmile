@@ -45,7 +45,6 @@ export default function ServiceVideos() {
     <section className="videos section-pad">
       <div className="container">
         <Reveal className="section-header">
-          <div className="section-tag">Watch How It Works</div>
           <h2 className="section-title">See Each Procedure <span>in Action</span></h2>
           <p className="section-subtitle">Not sure what a treatment involves? Watch a short, easy-to-follow guide for the service you're interested in before booking.</p>
         </Reveal>

@@ -33,7 +33,6 @@ export default function AboutTeam() {
     <section className="team-band section-pad">
       <div className="container">
         <Reveal className="team-head">
-          <div className="section-tag">Our Team</div>
           <h2 className="section-title">The Dentists Behind <span>Your Smile</span></h2>
           <p className="section-subtitle">
             A close-knit team of specialists who share one standard — unhurried, honest,
