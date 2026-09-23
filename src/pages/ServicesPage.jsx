@@ -6,12 +6,7 @@ import ServiceVideos from '../components/sections/ServiceVideos';
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        tag="Our Services"
-        title="Comprehensive Dental"
-        accent="Services"
-        subtitle="From routine checkups to complete smile transformations, explore the treatments we offer — all delivered under one roof by our specialist team."
-      />
+      <PageHero display="Our Services" />
       <Services naked />
       <ServicesExtras />
       <ServiceVideos />
