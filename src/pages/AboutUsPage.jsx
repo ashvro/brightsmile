@@ -6,12 +6,7 @@ import AboutTeam from '../components/sections/AboutTeam';
 export default function AboutUsPage() {
   return (
     <>
-      <PageHero
-        tag="About Us"
-        title="Dedicated to Your"
-        accent="Dental Health"
-        subtitle="Since 2009, BrightSmile Dental has delivered compassionate, modern dental care — building a practice where patients feel heard, respected, and at ease."
-      />
+      <PageHero display="About Us" />
       <About />
       <AboutExtras />
       <AboutTeam />

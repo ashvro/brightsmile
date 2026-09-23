@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MdOutlinePhone, MdOutlineChat, MdEmail, MdLocationOn, MdOutlineWatchLater, MdCheckCircle, MdErrorOutline } from 'react-icons/md';
+import PageHero from '../components/layout/PageHero';
 import Reveal from '../components/layout/Reveal';
 import './ContactPage.css';
 
@@ -68,19 +69,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="contact-hero">
-        <div className="contact-hero-blob contact-hero-blob-1" aria-hidden="true" />
-        <div className="contact-hero-blob contact-hero-blob-2" aria-hidden="true" />
-        <div className="container">
-          <Reveal dir="up">
-            <div className="contact-hero-inner">
-              <div className="section-tag section-tag-light">Contact Us</div>
-              <h1>We're Here to <span>Help</span></h1>
-              <p>Questions, bookings, insurance or just a friendly hello — reach out any way you like and we'll get back to you fast.</p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <PageHero display="Contact Us" />
 
       <section className="contact-main section-pad">
         <div className="container contact-grid">
