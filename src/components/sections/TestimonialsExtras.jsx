@@ -19,7 +19,6 @@ export default function TestimonialsExtras() {
     <section className="fx-band">
       <div className="container">
         <Reveal className="fx-head">
-          <div className="section-tag">In Numbers</div>
           <h2>Ratings That <span>Speak for Themselves</span></h2>
         </Reveal>
 

@@ -10,8 +10,7 @@ const HOME_SECTIONS = [
   { id: 'services', to: '/services' },
   { id: 'about', to: '/about-us' },
   { id: 'testimonials', to: '/testimonials' },
-  { id: 'faq', to: '/faq' },
-  { id: 'appointment', to: '/faq' },
+  { id: 'appointment', to: '/testimonials' },
 ];
 
 export default function Navbar() {
@@ -47,7 +46,6 @@ export default function Navbar() {
     { label: 'Services', to: '/services' },
     { label: 'About Us', to: '/about-us' },
     { label: 'Testimonials', to: '/testimonials' },
-    { label: 'FAQ', to: '/faq' },
     { label: 'Contact', to: '/contact' },
   ];
 

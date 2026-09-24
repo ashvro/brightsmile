@@ -13,37 +13,37 @@ import './Services.css';
 
 const services = [
   {
-    title: 'General Dentistry', color: '#0f7d6d', img: slide1, cat: 'preventive', price: 'From $99',
+    title: 'General Dentistry', color: '#0f7d6d', img: slide1, cat: 'preventive',
     book: 'General Checkup',
     desc: 'Comprehensive exams, fillings, cleanings, and preventive care to keep your smile healthy.',
     tags: ['Routine Checkups', 'Fillings & Extractions'],
   },
   {
-    title: 'Cosmetic Dentistry', color: '#3fb5a0', img: slide2, cat: 'cosmetic', price: 'From $149',
+    title: 'Cosmetic Dentistry', color: '#3fb5a0', img: slide2, cat: 'cosmetic',
     book: 'Cosmetic Dentistry',
     desc: 'Veneers, bonding, and smile makeovers designed to give you the confidence you deserve.',
     tags: ['Veneers & Bonding', 'Smile Design'],
   },
   {
-    title: 'Orthodontics', color: '#c9a84c', img: slide4, cat: 'ortho', price: 'From $199',
+    title: 'Orthodontics', color: '#c9a84c', img: slide4, cat: 'ortho',
     book: 'Orthodontics / Aligners',
     desc: 'Clear aligners and braces for children, teens, and adults. Straighten your smile discreetly.',
     tags: ['Invisalign', 'Braces'],
   },
   {
-    title: 'Dental Implants', color: '#4c86c0', img: slide5, cat: 'restorative', price: 'From $899',
+    title: 'Dental Implants', color: '#4c86c0', img: slide5, cat: 'restorative',
     book: 'Dental Implants',
     desc: 'Permanent, natural-looking tooth replacements that restore function and aesthetics.',
     tags: ['Single & Full Arch', 'Bone Grafting'],
   },
   {
-    title: 'Teeth Whitening', color: '#26a69a', img: slide3, cat: 'cosmetic', price: 'From $79',
+    title: 'Teeth Whitening', color: '#26a69a', img: slide3, cat: 'cosmetic',
     book: 'Teeth Whitening',
     desc: 'Professional in-office and take-home whitening treatments for a brighter smile in days.',
     tags: ['In-Office Whitening', 'Home Kits'],
   },
   {
-    title: 'Emergency Care', color: '#ef5350', img: doctor2, cat: 'emergency', price: '24/7',
+    title: 'Emergency Care', color: '#ef5350', img: doctor2, cat: 'emergency',
     book: 'Emergency Care',
     desc: 'Same-day appointments for urgent dental issues. We\'re here when you need us most.',
     tags: ['Same-Day Visits', 'Pain Relief'],
@@ -79,7 +79,6 @@ function Card({ data, off, dist }) {
         <div className="service-img-wrap">
           <img className="service-img" src={data.img} alt={data.title} loading="lazy" />
           <div className="service-img-shade" />
-          <span className="service-price" style={{ '--gentle-accent': data.color }}>{data.price}</span>
         </div>
 
         <div className="service-body">

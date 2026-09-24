@@ -88,27 +88,31 @@ export default function Testimonials({ naked = false }) {
           </Reveal>
         )}
 
-        <Reveal delay={0.05} className="testimonials-meta">
-          <Stars />
-          <span><strong>4.9 / 5</strong> average across 2,300+ verified reviews</span>
-        </Reveal>
+        {!naked && (
+          <Reveal delay={0.05} className="testimonials-meta">
+            <Stars />
+            <span><strong>4.9 / 5</strong> average across 2,300+ verified reviews</span>
+          </Reveal>
+        )}
 
-        <div className="testimonials-carousel">
-          <span className="edge-fade edge-fade-l" aria-hidden="true" />
-          <span className="edge-fade edge-fade-r" aria-hidden="true" />
-          <button className="carousel-arrow carousel-arrow-left" onClick={() => setCs(c => c - 1)} aria-label="Previous reviews">
-            <MdChevronLeft />
-          </button>
-          <div className="testimonials-track">
-            {reviews.map((r, j) => {
-              const { dist, x } = slot(j, cs);
-              return <ReviewCard key={r.name} data={r} off={x} dist={dist} />;
-            })}
+        {!naked && (
+          <div className="testimonials-carousel">
+            <span className="edge-fade edge-fade-l" aria-hidden="true" />
+            <span className="edge-fade edge-fade-r" aria-hidden="true" />
+            <button className="carousel-arrow carousel-arrow-left" onClick={() => setCs(c => c - 1)} aria-label="Previous reviews">
+              <MdChevronLeft />
+            </button>
+            <div className="testimonials-track">
+              {reviews.map((r, j) => {
+                const { dist, x } = slot(j, cs);
+                return <ReviewCard key={r.name} data={r} off={x} dist={dist} />;
+              })}
+            </div>
+            <button className="carousel-arrow carousel-arrow-right" onClick={() => setCs(c => c + 1)} aria-label="Next reviews">
+              <MdChevronRight />
+            </button>
           </div>
-          <button className="carousel-arrow carousel-arrow-right" onClick={() => setCs(c => c + 1)} aria-label="Next reviews">
-            <MdChevronRight />
-          </button>
-        </div>
+        )}
       </div>
     </section>
   );

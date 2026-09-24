@@ -73,27 +73,6 @@
   inset: 0;
   background: linear-gradient(180deg, transparent 40%, rgba(18,63,56,0.45) 100%);
 }
-/* Price tag on image */
-.service-price {
-  position: absolute;
-  left: 16px;
-  bottom: 14px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  color: var(--gentle-accent);
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(6px);
-  padding: 6px 14px;
-  border-radius: 999px;
-  box-shadow: 0 6px 16px rgba(18,63,56,0.18);
-  transition: var(--transition);
-}
-.glide-card:hover .service-price {
-  background: var(--gentle-accent);
-  color: #fff;
-  transform: translateY(-2px);
-}
 
 /* Body */
 .service-body {

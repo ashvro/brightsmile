@@ -31,12 +31,15 @@
 .video-card {
   display: flex;
   flex-direction: column;
+  width: 100%;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  text-decoration: none;
+  text-align: left;
   color: var(--text-dark);
+  font-family: inherit;
+  cursor: pointer;
   box-shadow: var(--shadow-sm);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
@@ -186,6 +189,76 @@
   border: 1px dashed rgba(15, 125, 109, 0.3);
   border-radius: 999px;
   padding: 8px 18px;
+}
+
+/* ─── Video modal player ──────────────────────────────── */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+  background: rgba(18, 63, 56, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.video-modal-frame {
+  position: relative;
+  width: min(960px, 100%);
+  border-radius: var(--radius-lg);
+  background: var(--navy);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+.video-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--navy);
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, color 0.3s ease;
+}
+.video-modal-close:hover {
+  background: var(--accent);
+  color: var(--navy);
+  transform: rotate(90deg);
+}
+.video-modal-close:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+.video-modal-iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  background: #000;
+}
+.video-modal-meta {
+  padding: 16px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.video-modal-meta h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: #fff;
 }
 
 @media (max-width: 900px) {

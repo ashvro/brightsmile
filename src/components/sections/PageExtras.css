@@ -89,15 +89,16 @@
   margin: 0 auto;
   padding-left: 40px;
 }
-.fx-timeline::before {
-  content: '';
+.fx-timeline-rail {
   position: absolute;
   left: 1px;
   top: 8px;
   bottom: 8px;
   width: 2px;
-  background: linear-gradient(180deg, var(--primary-light), var(--primary), var(--mint));
+  background: linear-gradient(180deg, var(--primary-light), var(--primary), var(--accent));
   border-radius: 999px;
+  transform-origin: top;
+  box-shadow: 0 0 14px rgba(15, 125, 109, 0.3);
 }
 .fx-mile {
   position: relative;
@@ -107,38 +108,87 @@
   align-items: center;
   padding: 18px 0;
 }
-.fx-mile::before {
-  content: '';
+.fx-mile-dot {
   position: absolute;
   left: -40px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
+  top: calc(50% - 9px);
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: var(--white);
-  border: 3px solid var(--primary);
-  box-shadow: 0 0 0 5px var(--primary-light);
+  border: 3px solid var(--fx-accent, var(--primary));
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--fx-accent, var(--primary)) 18%, transparent);
+  z-index: 2;
+}
+.fx-mile-dot::after {
+  content: '';
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--fx-accent, var(--primary)) 45%, transparent);
+  opacity: 0;
+  transform: scale(0.55);
+  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fx-mile:hover .fx-mile-dot::after {
+  opacity: 1;
+  transform: scale(1);
 }
 .fx-mile-year {
-  font-size: 1.5rem;
+  font-size: clamp(1.4rem, 3vw, 1.7rem);
   font-weight: 800;
-  color: var(--primary);
+  color: var(--fx-accent, var(--primary));
   line-height: 1;
   white-space: nowrap;
+  letter-spacing: 0.01em;
 }
+.fx-mile-slot { min-width: 0; }
 .fx-mile-card {
-  background: var(--white);
-  border: 1px solid var(--border);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: linear-gradient(160deg,
+      color-mix(in srgb, var(--fx-accent, var(--primary)) 18%, #ffffff),
+      color-mix(in srgb, var(--fx-accent, var(--primary)) 12%, #fbfefd));
+  border: 1.5px solid color-mix(in srgb, var(--fx-accent, var(--primary)) 62%, #000000);
   border-radius: var(--radius-md);
   padding: 20px 24px;
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease;
 }
+.fx-mile-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--fx-accent, var(--primary)), color-mix(in srgb, var(--fx-accent, var(--primary)) 40%, transparent));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
 .fx-mile-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
 }
+.fx-mile-card:hover::before { transform: scaleY(1); }
+.fx-mile-index {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin-top: 2px;
+  color: var(--fx-accent, var(--primary));
+  background: color-mix(in srgb, var(--fx-accent, var(--primary)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fx-accent, var(--primary)) 24%, transparent);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.fx-mile-copy { min-width: 0; }
 .fx-mile-card h3 { font-size: 1rem; font-weight: 800; color: var(--navy); }
 .fx-mile-card p { margin-top: 4px; font-size: 0.86rem; color: var(--text-mid); line-height: 1.65; }
 

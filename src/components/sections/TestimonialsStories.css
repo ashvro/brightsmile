@@ -1,0 +1,154 @@
+.stories {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--off-white), #eef7f1);
+}
+.stories .container { position: relative; z-index: 1; }
+.stories .ambient-blob-1 { background: radial-gradient(circle, #dff3ec, transparent 70%); }
+.stories .ambient-blob-2 { background: radial-gradient(circle, var(--mint), transparent 70%); }
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.story-card {
+  --ring: color-mix(in srgb, var(--story-accent) 45%, transparent);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(165deg, #ffffff, #fbfefd) padding-box,
+    linear-gradient(135deg, var(--ring), color-mix(in srgb, var(--ring) 45%, var(--border)) 62%, var(--border)) border-box;
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease;
+}
+.story-card::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--story-accent), color-mix(in srgb, var(--story-accent) 35%, var(--accent)));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+}
+.story-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 64px color-mix(in srgb, var(--story-accent) 26%, rgba(18, 63, 56, 0.14));
+}
+.story-card:hover::after { transform: scaleX(1); }
+
+.story-photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.story-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.story-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 63, 56, 0) 55%, rgba(18, 63, 56, 0.4) 100%);
+  pointer-events: none;
+}
+.story-chip {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 2;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--story-accent);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(18, 63, 56, 0.16);
+}
+
+.story-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 26px 26px;
+  flex: 1;
+}
+.story-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.story-stars { display: flex; gap: 3px; }
+.story-stars svg { color: #fbbf24; font-size: 1.1rem; }
+.story-verified {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--story-accent);
+  border: 1px solid color-mix(in srgb, var(--story-accent) 30%, var(--border));
+  border-radius: 999px;
+  padding: 3px 12px;
+  background: color-mix(in srgb, var(--story-accent) 7%, transparent);
+}
+
+.story-quote {
+  position: relative;
+  flex: 1;
+  font-size: 0.98rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+}
+.story-quote::before {
+  content: '“';
+  position: absolute;
+  top: -20px;
+  left: -6px;
+  font-size: 3.4rem;
+  line-height: 1;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--story-accent) 26%, transparent);
+  font-family: var(--font);
+  pointer-events: none;
+}
+
+.story-person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.story-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid color-mix(in srgb, var(--story-accent) 40%, var(--border));
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--story-accent) 24%, transparent);
+}
+.story-person-meta { display: flex; flex-direction: column; gap: 2px; }
+.story-person-meta strong { font-size: 0.95rem; font-weight: 800; color: var(--navy); }
+.story-person-meta span { font-size: 0.8rem; color: var(--text-light); }
+
+@media (max-width: 1024px) {
+  .story-grid { gap: 20px; }
+}
+@media (max-width: 860px) {
+  .story-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+@media (max-width: 560px) {
+  .story-body { padding: 20px 20px 22px; }
+}

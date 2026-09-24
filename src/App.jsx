@@ -8,7 +8,6 @@ import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
 import AboutUsPage from './pages/AboutUsPage';
 import TestimonialsPage from './pages/TestimonialsPage';
-import FaqPage from './pages/FaqPage';
 import ContactPage from './pages/ContactPage';
 
 function ScrollManager() {
@@ -46,7 +45,6 @@ function Layout() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/faq" element={<FaqPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Home />} />
         </Routes>
