@@ -366,3 +366,25 @@
   .fx-mile-year { font-size: 1.25rem; }
   .fx-band { padding: 56px 0 72px; }
 }
+
+/* ─── Small-screen polish ───────────────────── */
+@media (max-width: 640px) {
+  .fx-head { margin-bottom: 36px; }
+  .fx-head h2 { font-size: 1.35rem; }
+  .fx-mile { padding: 12px 0; }
+  .fx-mile-card { padding: 15px 16px; gap: 11px; }
+  .fx-mile-year { font-size: 1.15rem; }
+  .fx-mile-card h3 { font-size: 0.95rem; }
+  .fx-mile-card p { font-size: 0.82rem; }
+  .fx-mile-index { font-size: 0.65rem; padding: 5px 9px; }
+  .fx-step-num { width: 52px; height: 52px; font-size: 1.1rem; }
+  .fx-step h3 { font-size: 0.95rem; }
+  .fx-step p { font-size: 0.82rem; }
+  .fx-rating-score { padding: 28px 18px; }
+  .fx-rating-score strong { font-size: 2.8rem; }
+  .fx-bar-row { grid-template-columns: 20px 1fr 42px; gap: 9px; }
+  .fx-contact-main { padding: 28px 22px; }
+  .fx-contact-tel { font-size: 1.7rem; }
+  .fx-contact-actions { width: 100%; }
+  .fx-contact-actions a { flex: 1 1 auto; justify-content: center; }
+}

@@ -7,3 +7,17 @@
     var(--hero-bg, url('../../assets/slide1.jpg')) center / cover no-repeat;
   overflow: hidden;
 }
+
+/* Mobile: shorter hero + slight focus shift so more of the wide photo is visible */
+@media (max-width: 768px) {
+  .page-hero {
+    min-height: 230px;
+    background-position: center 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero {
+    min-height: 195px;
+  }
+}

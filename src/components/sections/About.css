@@ -336,3 +336,24 @@
   .about-point { padding: 14px 18px; }
   .about-point-text { font-size: 1.02rem; }
 }
+
+@media (max-width: 640px) {
+  .about-fig-main { height: 300px; }
+  .about-fig-small { width: 132px; height: 100px; border-width: 4px; right: 10px; bottom: -26px; }
+  .about-card { padding: 10px 14px; top: 14px; left: 14px; }
+  .about-card strong { font-size: 1.15rem; }
+  .about-card span { font-size: 0.7rem; }
+  .about-inner { gap: 44px; }
+  .about-content .section-title { font-size: 1.6rem; }
+  .about-points { padding: 2px 4px; gap: 10px; }
+  .about-point { gap: 12px; padding: 13px 16px; }
+  .about-point.is-constant { padding: 15px 18px; gap: 12px; }
+  .about-point.is-constant .about-point-text { font-size: 0.95rem; }
+  .about-point-text { font-size: 0.95rem; }
+  .about-point.is-active { transform: scale(1.02) !important; }
+}
+@media (max-width: 640px) {
+  .about-founder-quote { font-size: 1rem; }
+  .about-founder { gap: 14px; }
+  .about-founder-avatar { width: 56px; height: 56px; }
+}
