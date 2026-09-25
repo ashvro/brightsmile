@@ -1,0 +1,95 @@
+.fx-stats {
+  position: relative;
+  padding: 0 0 56px;
+  background: linear-gradient(180deg, var(--off-white), var(--cream));
+}
+.fx-stats-band {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--navy), #0e3c37);
+  padding: 40px 32px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.fx-stats-sheen {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(63, 181, 160, 0.28), transparent 50%),
+    radial-gradient(circle at 10% 90%, rgba(201, 168, 76, 0.16), transparent 45%);
+  pointer-events: none;
+}
+.fx-stats-band::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent 60%);
+}
+.fx-stats-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.fx-stat {
+  text-align: center;
+  padding: 8px 12px;
+}
+.fx-stat-ico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  font-size: 1.35rem;
+  color: #9fe0d2;
+  background: rgba(63, 181, 160, 0.14);
+  border: 1px solid rgba(63, 181, 160, 0.3);
+}
+.fx-stat-num {
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  background: linear-gradient(135deg, #ffffff, #8fd6c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.fx-stat-label {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 880px) {
+  .fx-stats-band { padding: 32px 20px; }
+  .fx-stats-grid { gap: 16px; }
+}
+@media (max-width: 640px) {
+  .fx-stats { padding-bottom: 44px; }
+  .fx-stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 8px; }
+  .fx-stats-band {
+    padding: 24px 12px;
+    border-radius: 0;
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+  .fx-stat { min-width: 0; padding: 4px 2px; }
+  .fx-stat-ico { width: 32px; height: 32px; font-size: 0.95rem; margin-bottom: 8px; border-radius: 9px; }
+  .fx-stat-num { font-size: clamp(0.95rem, 4.8vw, 1.25rem); letter-spacing: -0.02em; }
+  .fx-stat-label {
+    margin-top: 5px;
+    font-size: 0.56rem;
+    letter-spacing: 0.05em;
+    line-height: 1.35;
+  }
+}

@@ -9,6 +9,7 @@ import ServicesPage from './pages/ServicesPage';
 import AboutUsPage from './pages/AboutUsPage';
 import TestimonialsPage from './pages/TestimonialsPage';
 import ContactPage from './pages/ContactPage';
+import BookingModal from './components/booking/BookingModal';
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -51,6 +52,7 @@ function Layout() {
       </main>
       <Footer />
       {showFloatingContact && <FloatingContact />}
+      <BookingModal />
     </>
   );
 }

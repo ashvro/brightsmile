@@ -14,7 +14,7 @@
 .svc-accordion {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 60px;
   max-width: 980px;
   margin: 0 auto;
 }
@@ -27,7 +27,6 @@
   border: 1.5px solid transparent;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  overflow: hidden;
   scroll-margin-top: 120px;
   transform: translateY(0);
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease;
@@ -77,6 +76,45 @@
   text-align: left;
   cursor: pointer;
 }
+
+/* 3D index number — double border with a gap between, mounted on the card corner */
+.svc-num {
+  position: absolute;
+  top: -46px;
+  z-index: 2;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--svc-accent), color-mix(in srgb, var(--svc-accent) 35%, var(--accent)));
+  box-shadow: 0 16px 34px color-mix(in srgb, var(--svc-accent) 34%, rgba(18, 63, 56, 0.24));
+  line-height: 1;
+}
+.svc-item:not(.is-reverse) .svc-num { left: -35px; }
+.svc-item.is-reverse .svc-num { right: -35px; }
+.svc-num::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
+}
+.svc-num::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--svc-accent) 40%, var(--navy));
+  transform: translate(8px, 8px);
+  z-index: -1;
+}
 .svc-item-head:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: -2px;
@@ -106,6 +144,25 @@
   color: #fff;
   box-shadow: 0 8px 22px color-mix(in srgb, var(--svc-accent) 42%, transparent);
 }
+
+/* Decorative service photo — card background */
+.svc-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.45s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.svc-item.is-reverse .svc-bg { object-position: left center; }
+.svc-item:hover .svc-bg {
+  opacity: 0.42;
+  transform: scale(1.03);
+}
 .svc-item-title {
   flex: 1;
   font-size: 1.08rem;
@@ -116,8 +173,15 @@
 .svc-item-chevron {
   flex-shrink: 0;
   font-size: 1.6rem;
-  color: var(--text-light);
+  color: var(--text-mid);
   display: inline-flex;
+}
+.svc-item-chevron svg {
+  animation: svcBlink 1.8s ease-in-out infinite;
+}
+@keyframes svcBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 .svc-item.is-open .svc-item-chevron { color: var(--svc-accent); }
 
@@ -335,7 +399,12 @@
   .svc-item-ico { width: 40px; height: 40px; font-size: 1.25rem; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .svc-item-chevron svg { animation: none !important; }
+}
+
 @media (max-width: 620px) {
+  .svc-accordion { gap: 46px; }
   .svc-item-head { padding: 16px 14px; gap: 10px; }
   .svc-item-title { flex: 1 1 auto; font-size: 1rem; }
   .svc-item-chevron { font-size: 1.4rem; }
@@ -346,4 +415,9 @@
   .svc-item-actions { width: 100%; flex-direction: column; align-items: stretch; gap: 10px; }
   .svc-item-actions .btn-primary { justify-content: center; width: 100%; }
   .svc-facts li { grid-template-columns: 24px 72px 1fr; }
+  .svc-num { top: -34px; width: 52px; height: 52px; font-size: 1.25rem; border-radius: 14px; }
+  .svc-num::before { inset: 5px; border-radius: 9px; }
+  .svc-num::after { border-radius: 14px; transform: translate(6px, 6px); }
+  .svc-item:not(.is-reverse) .svc-num { left: 12px; }
+  .svc-item.is-reverse .svc-num { right: 12px; }
 }

@@ -6,7 +6,6 @@ const stats = [
   { value: 15, suffix: '+', label: 'Years of Excellence' },
   { value: 8000, suffix: '+', label: 'Happy Patients' },
   { value: 4.9, suffix: '★', label: 'Average Rating' },
-  { value: 12, suffix: '', label: 'Expert Dentists' },
 ];
 
 function CountUp({ target, suffix, inView }) {

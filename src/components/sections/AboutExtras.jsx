@@ -36,13 +36,8 @@ const list = {
 };
 
 const mile = {
-  hidden: { opacity: 0, y: 26 },
+  hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] } },
-};
-
-const yearAnim = {
-  hidden: { opacity: 0, x: -28 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] } },
 };
 
 const cardAnim = {
@@ -63,7 +58,6 @@ export default function AboutExtras() {
     <section className="fx-band">
       <div className="container">
         <Reveal className="fx-head">
-          <span className="section-tag">Our Journey</span>
           <h2>Sixteen Years of Trust, <span>Milestone by Milestone</span></h2>
         </Reveal>
 
@@ -76,6 +70,8 @@ export default function AboutExtras() {
             aria-hidden="true"
           />
 
+          {railIn && <span className="fx-timeline-beam" aria-hidden="true" />}
+
           <motion.ul
             className="fx-milestones"
             variants={list}
@@ -85,19 +81,36 @@ export default function AboutExtras() {
           >
             {milestones.map((m, i) => (
               <motion.li
-                className="fx-mile"
+                className={`fx-mile${i % 2 === 1 ? ' is-flip' : ''}`}
                 key={m.year}
                 variants={mile}
                 style={{ '--fx-accent': m.accent }}
               >
-                <motion.span className="fx-mile-dot" variants={dotAnim} aria-hidden="true" />
-                <motion.span className="fx-mile-year" variants={yearAnim}>{m.year}</motion.span>
-                <motion.div className="fx-mile-slot" variants={cardAnim}>
+                <motion.span
+                  className="fx-mile-dot"
+                  variants={dotAnim}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, margin: '-60px' }}
+                  aria-hidden="true"
+                />
+
+                <div className="fx-mile-side fx-mile-side--year">
+                  <motion.span
+                    className="fx-mile-year-card"
+                    variants={mile}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: '-60px' }}
+                  >{m.year}</motion.span>
+                </div>
+
+                <motion.div className="fx-mile-side fx-mile-side--card" variants={cardAnim}>
                   <div className="fx-mile-card">
-                    <span className="fx-mile-index">{String(i + 1).padStart(2, '0')}</span>
                     <div className="fx-mile-copy">
                       <h3>{m.title}</h3>
                       <p>{m.text}</p>
+                      <span className="fx-mile-more">Journey <span aria-hidden="true">→</span></span>
                     </div>
                   </div>
                 </motion.div>

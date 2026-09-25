@@ -24,100 +24,277 @@
   line-height: 1.7;
 }
 
-/* ─── Steps (Services) ──────────────────────────────── */
-.fx-steps {
+/* ─── Winding path (Services) ─────────────────────────── */
+.path-section { overflow: hidden; }
+.path-section .fx-head h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+.path-section .fx-head h2 span { display: block; }
+.path-section .fx-head { margin-bottom: 82px; }
+.path-track {
   position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.path-route {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+.path-route-line {
+  fill: none;
+  stroke: #cde9e0;
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+  shape-rendering: geometricPrecision;
+}
+.path-route-dash {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 5 15;
+  vector-effect: non-scaling-stroke;
+  shape-rendering: geometricPrecision;
+  animation: path-dash-march 1.8s linear infinite;
+}
+@keyframes path-dash-march {
+  from { stroke-dashoffset: 20; }
+  to { stroke-dashoffset: 0; }
+}
+
+.path-start,
+.path-finish {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+}
+.path-start { left: -88px; }
+.path-finish { right: -88px; }
+
+.path-cells {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 26px;
+  gap: 20px;
 }
-.fx-steps .fx-rail {
-  position: absolute;
-  top: 30px;
-  left: 12.5%;
-  right: 12.5%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--primary-light), var(--primary), var(--mint));
-  z-index: 1;
-}
-.fx-step {
+.path-cell {
   position: relative;
-  z-index: 2;
-  text-align: center;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
+  align-items: flex-start;
+  min-height: 250px;
 }
-.fx-step-num {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 1px solid var(--border);
+.path-cell.is-even { align-items: flex-end; }
+.path-cell > div { width: 100%; }
+
+.path-card {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  padding: 34px 26px 30px;
+  background:
+    linear-gradient(160deg, #ffffff 0%, #fbfefd 50%, #ffffff 100%) padding-box,
+    linear-gradient(145deg, color-mix(in srgb, var(--path-accent) 60%, transparent), var(--border) 75%) border-box;
+  border: 1.5px solid transparent;
   box-shadow: var(--shadow-sm);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease;
+}
+.path-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--path-accent), color-mix(in srgb, var(--path-accent) 30%, transparent));
+  opacity: 0.9;
+}
+.path-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+.path-card-head,
+.path-card-ico,
+.path-card-tag { display: none; }
+.path-card h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.path-card p {
+  margin-top: 12px;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* 3D number badge mounted on the route, matching service numbers */
+.path-badge {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  color: var(--primary);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
-}
-.fx-step:hover .fx-step-num {
-  transform: translateY(-4px);
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  letter-spacing: 0.04em;
   color: #fff;
-  box-shadow: 0 12px 28px rgba(15, 125, 109, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--path-accent), color-mix(in srgb, var(--path-accent) 55%, var(--accent)));
+  box-shadow: 0 14px 28px color-mix(in srgb, var(--path-accent) 32%, rgba(18, 63, 56, 0.22));
+  line-height: 1;
 }
-.fx-step h3 {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--navy);
+.path-badge::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  border-radius: 10px;
 }
-.fx-step p {
-  font-size: 0.85rem;
-  color: var(--text-mid);
-  line-height: 1.65;
-  max-width: 220px;
+.path-badge::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--path-accent) 45%, var(--navy));
+  transform: translate(6px, 6px);
+  z-index: -1;
 }
+.path-cell.is-even .path-badge { top: auto; bottom: -28px; }
 
 /* ─── Timeline (About) ──────────────────────────────── */
 .fx-timeline {
   position: relative;
-  max-width: 780px;
+  max-width: 860px;
   margin: 0 auto;
-  padding-left: 40px;
+  isolation: isolate;
 }
 .fx-timeline-rail {
   position: absolute;
-  left: 1px;
+  left: 50%;
   top: 8px;
   bottom: 8px;
   width: 2px;
+  transform: translateX(-50%);
   background: linear-gradient(180deg, var(--primary-light), var(--primary), var(--accent));
   border-radius: 999px;
   transform-origin: top;
   box-shadow: 0 0 14px rgba(15, 125, 109, 0.3);
 }
+.fx-timeline-beam {
+  position: absolute;
+  left: 50%;
+  top: -6%;
+  width: 6px;
+  height: 56px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.5) 55%,
+      #fff 88%);
+  background-color: #0f7d6d;
+  box-shadow: 0 16px 32px 8px rgba(15, 125, 109, 0.5), 0 0 70px 20px rgba(15, 125, 109, 0.28);
+  animation: fxBeamJourney 6.5s ease-in-out infinite;
+}
+.fx-timeline-beam::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #fff 0%, rgba(255, 255, 255, 0.72) 48%, transparent 74%);
+}
+@keyframes fxBeamJourney {
+  0% { top: -6%; opacity: 0; background-color: #0f7d6d; box-shadow: 0 16px 32px 8px rgba(15, 125, 109, 0.5), 0 0 70px 20px rgba(15, 125, 109, 0.28); }
+  5% { opacity: 1; }
+  14% { top: 9%; background-color: #0f7d6d; box-shadow: 0 16px 32px 8px rgba(15, 125, 109, 0.5), 0 0 70px 20px rgba(15, 125, 109, 0.28); }
+  19% { top: 9%; background-color: #0f7d6d; box-shadow: 0 16px 32px 8px rgba(15, 125, 109, 0.5), 0 0 70px 20px rgba(15, 125, 109, 0.28); }
+  37% { top: 35%; background-color: #6d5bd0; box-shadow: 0 16px 32px 8px rgba(109, 91, 208, 0.5), 0 0 70px 20px rgba(109, 91, 208, 0.28); }
+  42% { top: 35%; background-color: #6d5bd0; box-shadow: 0 16px 32px 8px rgba(109, 91, 208, 0.5), 0 0 70px 20px rgba(109, 91, 208, 0.28); }
+  60% { top: 61%; background-color: #c9a84c; box-shadow: 0 16px 32px 8px rgba(201, 168, 76, 0.5), 0 0 70px 20px rgba(201, 168, 76, 0.28); }
+  65% { top: 61%; background-color: #c9a84c; box-shadow: 0 16px 32px 8px rgba(201, 168, 76, 0.5), 0 0 70px 20px rgba(201, 168, 76, 0.28); }
+  83% { top: 86%; background-color: #e2725b; box-shadow: 0 16px 32px 8px rgba(226, 114, 91, 0.5), 0 0 70px 20px rgba(226, 114, 91, 0.28); }
+  94% { top: 86%; opacity: 1; background-color: #e2725b; box-shadow: 0 16px 32px 8px rgba(226, 114, 91, 0.5), 0 0 70px 20px rgba(226, 114, 91, 0.28); }
+  100% { top: 86%; opacity: 0; background-color: #e2725b; box-shadow: 0 16px 32px 8px rgba(226, 114, 91, 0.5), 0 0 70px 20px rgba(226, 114, 91, 0.28); }
+}
+@keyframes fxDotGlow {
+  0%, 100% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--fx-accent, var(--primary)) 18%, transparent); }
+  50% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--fx-accent, var(--primary)) 9%, transparent); }
+}
+.fx-milestones {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .fx-mile {
   position: relative;
   display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 28px;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  padding: 18px 0;
+  gap: 0;
+  padding: 26px 0;
+}
+.fx-mile::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: -70px;
+  width: 300px;
+  height: 230px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  filter: blur(44px);
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--fx-accent, var(--primary)) 55%, transparent), transparent 72%);
+}
+.fx-mile.is-flip::before {
+  right: auto;
+  left: -70px;
 }
 .fx-mile-dot {
   position: absolute;
-  left: -40px;
-  top: calc(50% - 9px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 18px;
   height: 18px;
   border-radius: 50%;
   background: var(--white);
   border: 3px solid var(--fx-accent, var(--primary));
   box-shadow: 0 0 0 5px color-mix(in srgb, var(--fx-accent, var(--primary)) 18%, transparent);
+  animation: fxDotGlow 3.5s ease-in-out infinite;
   z-index: 2;
 }
 .fx-mile-dot::after {
@@ -134,29 +311,65 @@
   opacity: 1;
   transform: scale(1);
 }
-.fx-mile-year {
-  font-size: clamp(1.4rem, 3vw, 1.7rem);
+
+.fx-mile-side--year {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.fx-mile-side--year .fx-mile-year-card {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
   font-weight: 800;
-  color: var(--fx-accent, var(--primary));
+  letter-spacing: 0.02em;
   line-height: 1;
   white-space: nowrap;
-  letter-spacing: 0.01em;
+  color: #fff;
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--fx-accent, var(--primary)) 78%, var(--accent)),
+      var(--fx-accent, var(--primary)));
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--fx-accent, var(--primary)) 42%, rgba(18, 63, 56, 0.25));
 }
-.fx-mile-slot { min-width: 0; }
+.fx-mile-side--year .fx-mile-year-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid var(--fx-accent, var(--primary));
+  transform: translateY(-50%);
+}
+.fx-mile.is-flip .fx-mile-side--year { order: 2; flex-direction: row-reverse; }
+.fx-mile.is-flip .fx-mile-side--year .fx-mile-year-card::after {
+  right: auto;
+  left: -8px;
+  border-left-color: transparent;
+  border-right: 8px solid var(--fx-accent, var(--primary));
+}
+.fx-mile.is-flip .fx-mile-side--card { order: 1; }
+.fx-mile-side--card { min-width: 0; }
+
 .fx-mile-card {
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  background: linear-gradient(160deg,
-      color-mix(in srgb, var(--fx-accent, var(--primary)) 18%, #ffffff),
-      color-mix(in srgb, var(--fx-accent, var(--primary)) 12%, #fbfefd));
-  border: 1.5px solid color-mix(in srgb, var(--fx-accent, var(--primary)) 62%, #000000);
-  border-radius: var(--radius-md);
-  padding: 20px 24px;
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease;
+  gap: 16px;
+  background: linear-gradient(135deg, var(--fx-accent, var(--primary)), color-mix(in srgb, var(--fx-accent, var(--primary)) 60%, var(--navy)));
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 24px 46px -22px color-mix(in srgb, var(--fx-accent, var(--primary)) 52%, rgba(18, 63, 56, 0.5)),
+    0 8px 20px -12px rgba(18, 63, 56, 0.25);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease, border-color 0.4s ease;
 }
 .fx-mile-card::before {
   content: '';
@@ -165,32 +378,130 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, var(--fx-accent, var(--primary)), color-mix(in srgb, var(--fx-accent, var(--primary)) 40%, transparent));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.3));
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.fx-mile-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-right-color: var(--fx-accent, var(--primary));
+  transform: translateY(-50%);
+}
+.fx-mile.is-flip .fx-mile-card::after {
+  left: auto;
+  right: -8px;
+  border-right-color: transparent;
+  border-left-color: var(--fx-accent, var(--primary));
+}
 .fx-mile-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 28px 58px -20px color-mix(in srgb, var(--fx-accent, var(--primary)) 60%, rgba(18, 63, 56, 0.45)),
+    0 12px 26px -16px rgba(18, 63, 56, 0.3);
 }
 .fx-mile-card:hover::before { transform: scaleY(1); }
-.fx-mile-index {
-  flex-shrink: 0;
-  font-size: 0.7rem;
+.fx-mile-card:hover .fx-mile-more { opacity: 1; transform: translateX(0); }
+.fx-mile-card:hover .fx-mile-more span { transform: translateX(4px); }
+
+.fx-mile-copy { position: relative; min-width: 0; }
+.fx-mile-card h3 {
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #fff;
+  position: relative;
+  padding-bottom: 9px;
+}
+.fx-mile-card h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 26px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.35));
+}
+.fx-mile-card p { margin-top: 8px; font-size: 0.86rem; color: rgba(255, 255, 255, 0.88); line-height: 1.65; }
+.fx-mile-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-  line-height: 1;
-  margin-top: 2px;
-  color: var(--fx-accent, var(--primary));
-  background: color-mix(in srgb, var(--fx-accent, var(--primary)) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--fx-accent, var(--primary)) 24%, transparent);
-  padding: 6px 10px;
-  border-radius: 999px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
-.fx-mile-copy { min-width: 0; }
-.fx-mile-card h3 { font-size: 1rem; font-weight: 800; color: var(--navy); }
-.fx-mile-card p { margin-top: 4px; font-size: 0.86rem; color: var(--text-mid); line-height: 1.65; }
+.fx-mile-more span {
+  line-height: 0;
+  transition: transform 0.35s ease;
+}
+
+@media (max-width: 720px) {
+  .fx-timeline { max-width: 520px; padding-left: 0; }
+  .fx-timeline-rail { left: 12px; transform: none; }
+  .fx-timeline-beam { left: 12px; transform: none; }
+  .fx-mile {
+    grid-template-columns: 28px 1fr;
+    gap: 0;
+    padding: 20px 0;
+  }
+  .fx-mile-dot {
+    left: 12px;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    border-width: 2px;
+  }
+  .fx-mile-dot::after { inset: -7px; }
+  .fx-mile-side--year {
+    grid-column: 1;
+    align-self: start;
+    padding-top: 4px;
+  }
+  .fx-mile-side--year .fx-mile-year-card {
+    padding: 4px 10px;
+    font-size: 0.82rem;
+    box-shadow: none;
+    background: none;
+    color: var(--fx-accent, var(--primary));
+    letter-spacing: 0.02em;
+  }
+  .fx-mile-side--year .fx-mile-year-card::after { display: none; }
+  .fx-mile.is-flip .fx-mile-side--year,
+  .fx-mile.is-flip .fx-mile-side--card { order: initial; }
+
+  .fx-mile-side--card { grid-column: 2; }
+  .fx-mile-card { padding: 16px 18px; }
+  .fx-mile-card::after { display: none; }
+  .fx-mile::before,
+  .fx-mile.is-flip::before {
+    left: auto;
+    right: -55px;
+    width: 230px;
+    height: 190px;
+  }
+  .fx-mile-card h3 { font-size: 0.98rem; }
+  .fx-mile-card p { font-size: 0.84rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-timeline-beam,
+  .fx-mile-dot { animation: none; }
+}
 
 /* ─── Rating breakdown (Testimonials) ────────────────── */
 .fx-rating {
@@ -356,30 +667,30 @@
 
 /* ─── Responsive ────────────────────────────────────── */
 @media (max-width: 900px) {
-  .fx-steps { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
-  .fx-steps .fx-rail { display: none; }
   .fx-rating, .fx-contact { grid-template-columns: 1fr; gap: 32px; }
 }
+@media (max-width: 880px) {
+  .path-route, .path-start, .path-finish { display: none; }
+  .path-cells { grid-template-columns: repeat(2, 1fr); gap: 60px 18px; }
+  .path-cell, .path-cell.is-even { align-items: flex-start; }
+  .path-cell.is-even .path-badge { top: -28px; bottom: auto; }
+}
 @media (max-width: 560px) {
-  .fx-steps { grid-template-columns: 1fr; }
-  .fx-mile { grid-template-columns: 1fr; gap: 10px; }
-  .fx-mile-year { font-size: 1.25rem; }
   .fx-band { padding: 56px 0 72px; }
+  .path-cells { grid-template-columns: 1fr; gap: 56px; }
 }
 
 /* ─── Small-screen polish ───────────────────── */
 @media (max-width: 640px) {
   .fx-head { margin-bottom: 36px; }
   .fx-head h2 { font-size: 1.35rem; }
-  .fx-mile { padding: 12px 0; }
-  .fx-mile-card { padding: 15px 16px; gap: 11px; }
-  .fx-mile-year { font-size: 1.15rem; }
-  .fx-mile-card h3 { font-size: 0.95rem; }
-  .fx-mile-card p { font-size: 0.82rem; }
-  .fx-mile-index { font-size: 0.65rem; padding: 5px 9px; }
-  .fx-step-num { width: 52px; height: 52px; font-size: 1.1rem; }
-  .fx-step h3 { font-size: 0.95rem; }
-  .fx-step p { font-size: 0.82rem; }
+  .path-card { padding: 20px 18px 20px 66px; }
+  .path-card h3 { font-size: 0.95rem; }
+  .path-card p { font-size: 0.82rem; }
+  .path-card-tag { font-size: 0.6rem; padding: 3px 8px; }
+  .path-card-ico { width: 40px; height: 40px; font-size: 1.2rem; border-radius: 11px; top: -16px; }
+  .path-badge { width: 40px; height: 40px; font-size: 0.95rem; }
+  .path-row + .path-row { margin-top: 30px; }
   .fx-rating-score { padding: 28px 18px; }
   .fx-rating-score strong { font-size: 2.8rem; }
   .fx-bar-row { grid-template-columns: 20px 1fr 42px; gap: 9px; }

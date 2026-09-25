@@ -41,6 +41,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [pathname]);
 
+  useEffect(() => {
+    const closeMenuOnBooking = () => setMenuOpen(false);
+    window.addEventListener('booking-open', closeMenuOnBooking);
+    return () => window.removeEventListener('booking-open', closeMenuOnBooking);
+  }, []);
+
   const navLinks = [
     { label: 'Home', to: '/' },
     { label: 'Services', to: '/services' },
@@ -76,7 +82,7 @@ export default function Navbar() {
             </li>
           ))}
           <li className="nav-cta-mobile">
-            <Scroll to="appointment" spy smooth duration={600} offset={-80} onClick={() => setMenuOpen(false)}>
+            <Scroll to="appointment" spy smooth duration={600} offset={-80} data-open-booking onClick={() => setMenuOpen(false)}>
               <button className="btn-primary nav-cta-btn">
                 <FiCalendar /> Book Now
               </button>
@@ -84,7 +90,7 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <Scroll to="appointment" spy smooth duration={600} offset={-80} className="nav-cta-desktop">
+        <Scroll to="appointment" spy smooth duration={600} offset={-80} data-open-booking className="nav-cta-desktop">
           <button className="btn-primary nav-cta-btn">
             <FiCalendar /> Book Appointment
           </button>

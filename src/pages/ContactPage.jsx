@@ -126,6 +126,49 @@ export default function ContactPage() {
         bg={dentalHeroContactUs}
       />
 
+      <section className="contact-extra">
+        <div className="ambient-blobs" aria-hidden="true">
+          <div className="ambient-blob ambient-blob-1" />
+          <div className="ambient-blob ambient-blob-2" />
+        </div>
+        <div className="edge-rails" aria-hidden="true">
+          <span className="edge-rail edge-rail-l" />
+          <span className="edge-rail edge-rail-r" />
+          <span className="edge-arc edge-arc-l" />
+          <span className="edge-arc edge-arc-r" />
+          <span className="edge-dots edge-dots-tl" />
+          <span className="edge-dots edge-dots-br" />
+        </div>
+
+        <div className="container contact-extra-grid">
+          <Reveal dir="left">
+            <div className="contact-extra-card">
+              <span className="contact-extra-icon"><MdOutlineWatchLater /></span>
+              <div>
+                <h3>Opening Hours</h3>
+                <ul className="ce-hours">
+                  <li><span>Mon – Fri</span><strong>9:00 – 19:00</strong></li>
+                  <li><span>Saturday</span><strong>10:00 – 17:00</strong></li>
+                  <li><span>Sunday</span><strong className="muted">Closed</strong></li>
+                </ul>
+              </div>
+            </div>
+          </Reveal>
+          <Reveal dir="right" delay={0.1}>
+            <div className="contact-extra-card">
+              <span className="contact-extra-icon"><MdLocationOn /></span>
+              <div>
+                <h3>Getting Here</h3>
+                <p className="ce-text">Two minutes from Grand Central stop. Street parking on Wellness Blvd and a public lot behind the building.</p>
+                <a className="ce-link" href="https://maps.google.com/?q=New+York" target="_blank" rel="noopener noreferrer">
+                  Get directions <MdArrowForward aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="contact-main section-pad">
         <div className="ambient-blobs" aria-hidden="true">
           <div className="ambient-blob ambient-blob-1" />
@@ -285,49 +328,6 @@ export default function ContactPage() {
             </div>
             </Reveal>
           </div>
-        </div>
-      </section>
-
-      <section className="contact-extra">
-        <div className="ambient-blobs" aria-hidden="true">
-          <div className="ambient-blob ambient-blob-1" />
-          <div className="ambient-blob ambient-blob-2" />
-        </div>
-        <div className="edge-rails" aria-hidden="true">
-          <span className="edge-rail edge-rail-l" />
-          <span className="edge-rail edge-rail-r" />
-          <span className="edge-arc edge-arc-l" />
-          <span className="edge-arc edge-arc-r" />
-          <span className="edge-dots edge-dots-tl" />
-          <span className="edge-dots edge-dots-br" />
-        </div>
-
-        <div className="container contact-extra-grid">
-          <Reveal dir="left">
-            <div className="contact-extra-card">
-              <span className="contact-extra-icon"><MdOutlineWatchLater /></span>
-              <div>
-                <h3>Opening Hours</h3>
-                <ul className="ce-hours">
-                  <li><span>Mon – Fri</span><strong>9:00 – 19:00</strong></li>
-                  <li><span>Saturday</span><strong>10:00 – 17:00</strong></li>
-                  <li><span>Sunday</span><strong className="muted">Closed</strong></li>
-                </ul>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal dir="right" delay={0.1}>
-            <div className="contact-extra-card">
-              <span className="contact-extra-icon"><MdLocationOn /></span>
-              <div>
-                <h3>Getting Here</h3>
-                <p className="ce-text">Two minutes from Grand Central stop. Street parking on Wellness Blvd and a public lot behind the building.</p>
-                <a className="ce-link" href="https://maps.google.com/?q=New+York" target="_blank" rel="noopener noreferrer">
-                  Get directions <MdArrowForward aria-hidden="true" />
-                </a>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 

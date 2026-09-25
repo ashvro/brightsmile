@@ -75,7 +75,7 @@ export default function Faq({ naked = false }) {
                 <FiPhone /> +1 (555) 000-1234
               </a>
               <div className="faq-side-actions">
-                <Link to="appointment" spy smooth duration={700} offset={-80} className="btn-primary faq-side-cta">
+                <Link to="appointment" spy smooth duration={700} offset={-80} data-open-booking className="btn-primary faq-side-cta">
                   Book a visit
                 </Link>
                 <a className="faq-side-ghost" href="mailto:hello@brightsmile.com">

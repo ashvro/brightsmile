@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   MdHealthAndSafety,
@@ -20,12 +19,29 @@ import {
 import Reveal from '../layout/Reveal';
 import './ServiceInfo.css';
 
+import svcGeneral from '../../assets/svc-general.jpg';
+import svcCosmetic from '../../assets/svc-cosmetic.jpg';
+import svcOrtho from '../../assets/svc-ortho.jpg';
+import svcImplant from '../../assets/svc-implant.jpg';
+import svcWhitening from '../../assets/svc-whitening.jpg';
+import svcEmergency from '../../assets/svc-emergency.jpg';
+
+const PHOTO = {
+  general: svcGeneral,
+  cosmetic: svcCosmetic,
+  ortho: svcOrtho,
+  implant: svcImplant,
+  whitening: svcWhitening,
+  emergency: svcEmergency,
+};
+
 const services = [
   {
     id: 'general-dentistry',
     title: 'General Dentistry',
     color: '#0f7d6d',
     icon: MdHealthAndSafety,
+    bg: PHOTO.general,
     book: 'General Checkup',
     desc: 'Comprehensive exams, fillings, cleanings, and preventive care to keep your smile healthy. Our general dentistry is the foundation of everything we do — unhurried, thorough, and designed around you.',
     includes: [
@@ -50,6 +66,7 @@ const services = [
     title: 'Cosmetic Dentistry',
     color: '#3fb5a0',
     icon: MdFaceRetouchingNatural,
+    bg: PHOTO.cosmetic,
     book: 'Cosmetic Dentistry',
     desc: 'Veneers, bonding, and smile makeovers designed to give you the confidence you deserve. Every smile design starts with a consultation and a digital preview so you know the result before we begin.',
     includes: [
@@ -74,6 +91,7 @@ const services = [
     title: 'Orthodontics',
     color: '#c9a84c',
     icon: MdAlignHorizontalCenter,
+    bg: PHOTO.ortho,
     book: 'Orthodontics / Aligners',
     desc: 'Clear aligners and braces for children, teens, and adults. Straighten your smile discreetly with monthly progress checks and a treatment plan built around your goals and lifestyle.',
     includes: [
@@ -98,6 +116,7 @@ const services = [
     title: 'Dental Implants',
     color: '#4c86c0',
     icon: MdAnchor,
+    bg: PHOTO.implant,
     book: 'Dental Implants',
     desc: 'Permanent, natural-looking tooth replacements that restore function and aesthetics. From single teeth to full-arch restorations, implants help you eat, speak, and smile with total confidence.',
     includes: [
@@ -122,6 +141,7 @@ const services = [
     title: 'Teeth Whitening',
     color: '#26a69a',
     icon: MdFlashOn,
+    bg: PHOTO.whitening,
     book: 'Teeth Whitening',
     desc: 'Professional in-office and take-home whitening treatments for a brighter smile in days. Safe, enamel-friendly formulas brighten your smile several shades — without the guesswork of retail kits.',
     includes: [
@@ -142,10 +162,11 @@ const services = [
     ],
   },
   {
-    id: 'emergency-care',
+id: 'emergency-care',
     title: 'Emergency Care',
-    color: '#ef5350',
+    color: '#e27b6a',
     icon: MdOfflineBolt,
+    bg: PHOTO.emergency,
     book: 'Emergency Care',
     desc: 'Same-day appointments for urgent dental issues. From severe pain to knocked-out teeth, we\'re here when you need us most — call ahead and we\'ll fit you in fast.',
     includes: [
@@ -194,13 +215,9 @@ const bodyAnim = {
 
 export default function ServiceInfo() {
   const [open, setOpen] = useState(null);
-  const navigate = useNavigate();
 
   const bookService = s => {
-    navigate('/#appointment');
-    window.setTimeout(() => {
-      window.dispatchEvent(new CustomEvent('book-service', { detail: { service: s.book } }));
-    }, 500);
+    window.dispatchEvent(new CustomEvent('book-service', { detail: { service: s.book } }));
   };
 
   return (
@@ -228,9 +245,11 @@ export default function ServiceInfo() {
                 <Reveal key={s.id} delay={Math.min(i * 0.06, 0.25)}>
                   <div
                     id={`svc-${s.id}`}
-                    className={`svc-item${isOpen ? ' is-open' : ''}`}
+                    className={`svc-item${isOpen ? ' is-open' : ''}${i % 2 === 1 ? ' is-reverse' : ''}`}
                     style={{ '--svc-accent': s.color }}
                   >
+                    <span className="svc-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                    <img className="svc-bg" src={s.bg} alt="" aria-hidden="true" />
                     <button
                       type="button"
                       className="svc-item-head"

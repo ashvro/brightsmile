@@ -1,7 +1,9 @@
 .hero {
-  height: 78vh;
-  min-height: 480px;
   position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 480px;
+  width: 100%;
   overflow: hidden;
   background: var(--navy);
 }
@@ -115,11 +117,15 @@
 }
 
 @media (max-width: 640px) {
-  .hero { height: 70vh; min-height: 420px; }
+  .hero {
+    height: 100vh;
+    height: 100svh;
+    min-height: 460px;
+  }
   .hero-arrow { width: 42px; height: 42px; font-size: 1.2rem; }
-  .hero-arrow-left { left: 12px; }
-  .hero-arrow-right { right: 12px; }
-  .hero-caption { gap: 12px; margin-top: 28px; }
+  .hero-arrow-left { left: 8px; }
+  .hero-arrow-right { right: 8px; }
+  .hero-caption { gap: 12px; margin-top: 20px; padding: 0 16px; }
   .hero-caption h1 { font-size: 40px; }
   .hero-caption p { font-size: 17px; }
 }

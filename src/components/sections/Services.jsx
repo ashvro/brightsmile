@@ -96,6 +96,7 @@ function Card({ data, off, dist }) {
             spy smooth duration={700}
             offset={-80}
             className="service-link"
+            data-book={data.book}
             onClick={() => prefillService(data.book)}
           >
             Book this
